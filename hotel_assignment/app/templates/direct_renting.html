@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Form</title>
+</head>
+
+<body>
+    <h2>Inperson Rent a room</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+            <a href="{{ url_for('register_customer') }}"
+                class="btn btn-primary btn-sm">New customer? Register them here</a>
+    <br></br>
+            <div>
+                {{ form.customerID.label }} {{ form.customerID }}
+            </div>
+            <div>
+                {{ form.employee_ssn.label }} {{ form.employee_ssn }}
+            </div>
+            <div>
+                {{ form.hotel_id.label }} {{ form.hotel_id }}
+            </div>
+            <div>
+                {{ form.room_number.label }} {{ form.room_number }}
+            </div>
+            <div>
+                {{ form.start_date.label }} {{ form.start_date }}
+            </div>
+            <div>
+                {{ form.end_date.label }} {{ form.end_date }}
+            </div>
+            <div>
+                {{ form.credit_card_number.label }} {{ form.credit_card_number }}
+            </div>
+            <div>
+                {{ form.cvv.label }} {{ form.cvv }}
+            </div>
+            <div>
+                {{ form.credit_card_expiry.label }} {{ form.credit_card_expiry }}
+            </div>
+            <div>
+                {{ form.billing_address.label }} {{ form.billing_address }}
+            </div>
+            <div>
+                {{ form.submit() }}
+            </div>
+    </form>
+</body>
+
+</html>
+{% endblock %}

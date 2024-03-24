@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hotel Booking App{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <main>
+        <div class="container mt-3 mb-3"> <!-- Added margin-top and margin-bottom -->
+            <header>
+                <h1>Hotel Booking App</h1>
+            </header>
+            <nav>
+                <!-- Navigation Links -->
+                <a href="{{ url_for('home') }}" style="margin-right: 7px;">Home</a>
+                <a href="{{ url_for('search_rooms') }}"style="margin-right: 7px;">Search Rooms</a>
+                <a href="{{ url_for('direct_renting') }}"style="margin-right: 7px;">Make Renting (Employee only)</a>
+                <a href="{{ url_for('show_bookings') }}"style="margin-right: 7px;">Convert Booking to Renting (Employee only)</a>
+                <a href="{{ url_for('view1') }}"style="margin-right: 7px;"># of available rooms by area</a>
+                <a href="{{ url_for('view2') }}">Capacity of hotels</a>
+            </nav>
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</body>
+
+</html>

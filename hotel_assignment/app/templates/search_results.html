@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+Search Results
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Search Results</h2>
+    {% if rooms %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Hotel</th>
+                <th>City</th>
+                <th>Room Number</th>
+                <th>Price</th>
+                <th>Capacity</th>
+                <th>View Type</th>
+                <th>Extended</th>
+                <th>Amenities</th>
+                <th>Problems</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+            <tr>
+                <td>{{ room.chain_name }}</td>
+                <td>{{ room.city }}</td>
+                <td>{{ room.room_number }}</td>
+                <td>${{ room.price }}</td>
+                <td>{{ room.capacity }}</td>
+                <td>{{ room.view_type }}</td>
+                <td>{{ room.is_extended }}</td>
+                <td>{{ room.amenities }}</td>
+                <td>{{ room.problems }}</td>
+                <td>
+                    <a href="{{ url_for('existing_book_room', hotel_id=room.hotelid, room_number=room.room_number) }}" class="btn btn-primary btn-sm">Past customer? Book here!</a>
+                    <br></br><a href="{{ url_for('new_book_room', hotel_id=room.hotelid, room_number=room.room_number) }}" class="btn btn-primary btn-sm">New customer? Book here!</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No rooms found matching your criteria. Please try again with different search parameters.</p>
+    {% endif %}
+</div>
+{% endblock %}

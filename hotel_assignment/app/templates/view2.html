@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Room Capacities</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Hotel Room Capacities</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Hotel ID</th>
+                    <th>Hotel Chain Name</th>
+                    <th>City</th>
+                    <th>Total Capacity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for hotel in hotels %}
+                <tr>
+                    <td>{{ hotel.hotelID }}</td>
+                    <td>{{ hotel.hotel_chain_name }}</td>
+                    <td>{{ hotel.city }}</td>
+                    <td>{{ hotel.total_capacity }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+{% endblock %}

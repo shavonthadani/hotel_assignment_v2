@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Bookings</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Booking ID</th>
+                <th scope="col">Customer ID</th>
+                <th scope="col">Hotel Chain Name</th>
+                <th scope="col">City</th>
+                <th scope="col">Hotel ID</th>
+                <th scope="col">Room Number</th>
+                <th scope="col">Capacity</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking['bookingID'] }}</td>
+                <td>{{ booking['customerID'] }}</td>
+                <td>{{ booking['hotel_chain_name'] }}</td>
+                <td>{{ booking['city'] }}</td>
+                <td>{{ booking['hotelID'] }}</td>
+                <td>{{ booking['room_number'] }}</td>
+                <td>{{ booking['capacity'] }}</td>
+                <td>
+                    <a href="{{ url_for('convert_to_rental', booking_id=booking['bookingID']) }}" class="btn btn-primary btn-sm">Convert to Renting</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="8">No bookings found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

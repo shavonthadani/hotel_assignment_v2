@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Form</title>
+</head>
+
+<body>
+    <h2>Register Customer inperson (Employee Only)</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+            <div>
+                {{ form.new_customer_id.label }} {{ form.new_customer_id }}
+            </div>
+            <div>
+                {{ form.street_number.label }} {{ form.street_number }}
+            </div>
+            <div>
+                {{ form.street_name.label }} {{ form.street_name }}
+            </div>
+            <div>
+                {{ form.apt_number.label }} {{ form.apt_number }}
+            </div>
+            <div>
+                {{ form.city.label }} {{ form.city }}
+            </div>
+            <div>
+                {{ form.state.label }} {{ form.state }}
+            </div>
+            <div>
+                {{ form.zip_code.label }} {{ form.zip_code }}
+            </div>
+            <div>
+                {{ form.first_name.label }} {{ form.first_name }}
+            </div>
+            <div>
+                {{ form.middle_name.label }} {{ form.middle_name }}
+            </div>
+            <div>
+                {{ form.last_name.label }} {{ form.last_name }}
+            </div>
+            <div>
+                {{ form.phone_numbers.label }} {{ form.phone_numbers }}
+            </div>
+            <div>
+                {{ form.emails.label }} {{ form.emails }}
+            </div>
+
+            <div>
+                {{ form.submit() }}
+            </div>
+    </form>
+</body>
+
+</html>
+{% endblock %}

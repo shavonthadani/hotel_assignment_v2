@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+Existing Booking
+{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Form</title>
+</head>
+
+<body>
+    <h2>Booking Form</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <h4>Returning Customer? Enter your id here</h2>
+            <div>
+                {{ form.existing_customer_id.label }} {{ form.existing_customer_id }}
+            </div>
+
+            <div>
+                {{ form.submit() }}
+            </div>
+    </form>
+</body>
+
+</html>
+{% endblock %}
